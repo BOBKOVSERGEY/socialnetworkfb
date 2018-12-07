@@ -10,6 +10,7 @@ $password2 = ""; // пароль2
 $date = ""; // дата регистрации
 $error_array = [];// Ошибки
 $uniqueId = abs( crc32( uniqid() ) );
+//$uniqueId = time() . getmypid();
 
 if (isset($_POST['register_button'])) {
 // значения формы
@@ -90,6 +91,16 @@ if (isset($_POST['register_button'])) {
 //Generate username by concatenating first name and last name
     $username = $fname . "_" . $lname;
 
+    // генерируем уникальное имя
+    /*$check_username_query = DB::query('SELECT username FROM users WHERE username=:username', [':username'=>$username]);
+    $i = 0;
+//if username exists add number to username
+    while( count($check_username_query)!= 0) {
+      $i++; //Add 1 to i
+      $username = $username . "_" . $i;
+      $check_username_query = DB::query('SELECT username FROM users WHERE username=:username', [':username'=>$username]);
+    }*/
+
 //Profile picture assignment
     $rand = rand(1, 2); //Random number between 1 and 2
 
@@ -133,6 +144,38 @@ if (isset($_POST['register_button'])) {
     $_SESSION['reg_email'] = '';
     $_SESSION['reg_email2'] = '';
 
+  }
+
+}
+
+if (isset($_POST['login_button'])) {
+
+  $email = Base::security($_POST['log_email']);
+  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+  $_SESSION['log_email'] = $email;
+
+  $password = Base::security($_POST['log_password']);
+
+  if (DB::query('SELECT * FROM users WHERE email=:email', [':email' => $email])) {
+    if (password_verify($password, DB::query('SELECT password FROM users WHERE email=:email', [':email' => $email])[0]['password'])) {
+      $user = DB::query('SELECT * FROM users WHERE email=:email', [':email' => $email]);
+      $username = $user[0]['username'];
+      $userUniqueId = $user[0]['unique_id'];
+
+      if (DB::query('SELECT * FROM users WHERE email=:email AND user_closed=:yes', [':email' => $email, ':yes'=> 'yes'])) {
+        DB::query('UPDATE users SET user_closed=:no WHERE email=:email', [':no' => 'no',':email' => $email]);
+      }
+
+      $_SESSION['username'] = $username;
+      $_SESSION['unique_id'] = $userUniqueId;
+
+      header("Location: /index.php");
+      exit();
+    } else {
+      array_push($error_array, "Email или пароль некорректны<br>");
+    }
+  } else {
+    array_push($error_array, "Email или пароль некорректны<br>");
   }
 
 }
