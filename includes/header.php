@@ -3,15 +3,16 @@ if (isset($_SESSION['username'])) {
   $userLoggedIn = $_SESSION['username'];
   $userUniqueId = $_SESSION['unique_id'];
   $userEmail = $_SESSION['log_email'];
+  $user = DB::query('SELECT * FROM users WHERE email=:email', [':email' => $userEmail])[0];
 
-  $user = DB::query('SELECT * FROM users WHERE email=:email', [':email' => $userEmail]);
+  $userId = $user['id'];
+  $_SESSION['user_id'] = $userId;
 
-  debug($user);
+
 } else {
   header("Location: /register.php");
 }
-?>
-<!doctype html>
+?><!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -38,7 +39,7 @@ if (isset($_SESSION['username'])) {
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
       </form>
       <div class="userName">
-        <a href="<?php echo $user[0]['unique_id']; ?>"><?php echo $user[0]['first_name']; ?></a>
+        <a href="<?php echo $user['unique_id']; ?>"><?php echo $user['first_name']; ?></a>
       </div>
       <ul class="navbar-nav">
         <li class="nav-item active">

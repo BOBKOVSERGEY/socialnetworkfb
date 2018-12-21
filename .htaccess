@@ -1,0 +1,5 @@
+AddDefaultCharset utf-8
+
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9_-]+)$ profile.php?profile_userid=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/$ profile.php?profile_userid=$1

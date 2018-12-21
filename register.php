@@ -10,6 +10,7 @@ $password2 = ""; // пароль2
 $date = ""; // дата регистрации
 $error_array = [];// Ошибки
 $uniqueId = abs( crc32( uniqid() ) );
+$uniqueId = 'id' . $uniqueId;
 //$uniqueId = time() . getmypid();
 
 if (isset($_POST['register_button'])) {
