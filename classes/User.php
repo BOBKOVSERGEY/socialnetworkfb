@@ -52,10 +52,10 @@ class User
       return false;
     }
   }
-  public function isFriend($username_to_check)
+  public function isFriend($userIdToCheck)
   {
-   $usernameComma = "," . $username_to_check . ",";
-   if ((strstr($this->user['friend_array'], $usernameComma) || $username_to_check == $this->user['username'])) {
+   $userIdComma = ',' . $userIdToCheck . ',';
+   if ((strstr($this->user['friend_array'], $userIdComma) || $userIdToCheck == $this->user['id'])) {
      return true;
    } else {
      return false;

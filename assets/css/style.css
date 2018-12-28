@@ -91,15 +91,27 @@ img {
   border-radius: 10px;
 }
 
-.status_post:hover {
-  cursor: pointer;
-}
 .wrapper-iframe-like {
   font-family: 'ComfortaaRegularGoogle';
   margin-top: 0;
   background: #fff;
   font-size: 13px;
   padding: 15px 15px 15px 0;
+}
+
+
+.comments::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--color-silver-3);
+}
+
+.comments::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+.comments {
+  max-height: 150px;
+  overflow-x: auto;
 }
 
 

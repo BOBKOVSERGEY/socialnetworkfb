@@ -3,11 +3,20 @@ require __DIR__ . '/init.php';
 require __DIR__ . '/includes/header.php';
 
 $postObj = new Post($_SESSION['user_id']);
+//debug($postObj);
 
 if (isset($_POST['post'])) {
   $postObj->submitPost($_POST['post_text'], 'none');
   header("Location: /");
 }
+
+if (isset($_GET['post_id'])) {
+  $postId = $_GET['post_id'];
+  $postObj->displayComments($postId, $userId);
+  header('Location: /');
+}
+
+
 ?>
   <section class="user-details">
     <div class="container">
@@ -41,12 +50,12 @@ if (isset($_POST['post'])) {
                 </div>
                 <button type="submit" name="post" id="post_button" class="btn btn-primary">Сказать</button>
               </form>
-              <!--<div class="posts_area"></div>
+              <div class="posts_area"></div>
               <div class="text-center m-3">
                 <i id="loading" class="fa fa-spinner fa-3x fa-spin"></i>
-              </div>-->
+              </div>
               <div>
-                <?php echo $postObj->loadPostsFriends();?>
+
               </div>
 
             </div>

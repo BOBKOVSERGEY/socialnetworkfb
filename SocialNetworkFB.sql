@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 21 2018 г., 17:44
+-- Время создания: Дек 28 2018 г., 16:44
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.0.26
 
@@ -61,7 +61,31 @@ INSERT INTO `posts` (`id`, `body`, `added_by`, `user_to`, `date_added`, `user_cl
 (14, 'some', 'Sergey_Bobkov', 'none', '2018-12-21 15:54:57', 'no', 'no', 0, 9),
 (15, 'some', 'Sergey_Bobkov', 'none', '2018-12-21 17:09:29', 'no', 'no', 0, 9),
 (16, 'hello', 'Kira_Taran', 'none', '2018-12-21 17:24:46', 'no', 'no', 0, 10),
-(17, 'много постов', 'Kira_Taran', 'none', '2018-12-21 17:25:21', 'no', 'no', 0, 10);
+(17, 'много постов', 'Kira_Taran', 'none', '2018-12-21 17:25:21', 'no', 'no', 0, 10),
+(18, 'some', 'Kira_Taran', 'none', '2018-12-26 15:32:26', 'no', 'no', 0, 10),
+(19, 'Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.', 'Kira_Taran', 'none', '2018-12-26 15:33:07', 'no', 'no', 0, 10),
+(20, 'Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.', 'Kira_Taran', 'none', '2018-12-26 15:33:25', 'no', 'no', 0, 10),
+(21, 'Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.', 'Kira_Taran', 'none', '2018-12-26 15:33:41', 'no', 'no', 0, 10),
+(22, 'Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.', 'Kira_Taran', 'none', '2018-12-26 15:33:46', 'no', 'no', 0, 10),
+(23, 'Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.', 'Kira_Taran', 'none', '2018-12-26 15:33:49', 'no', 'no', 0, 10),
+(24, 'new', 'Sergey_Bobkov', 'none', '2018-12-26 16:31:47', 'no', 'no', 0, 9),
+(25, 'new', 'Sergey_Bobkov', 'none', '2018-12-26 16:31:54', 'no', 'no', 0, 9),
+(26, '5', 'Sergey_Bobkov', 'none', '2018-12-26 16:31:59', 'no', 'no', 0, 9),
+(27, '3', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:01', 'no', 'no', 0, 9),
+(28, '44', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:04', 'no', 'no', 0, 9),
+(29, '221', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:08', 'no', 'no', 0, 9),
+(30, 's', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:11', 'no', 'no', 0, 9),
+(31, 's', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:13', 'no', 'no', 0, 9),
+(32, 's', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:15', 'no', 'no', 0, 9),
+(33, 's', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:16', 'no', 'no', 0, 9),
+(34, 'ыыыыыыыыыыыыы', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:19', 'no', 'no', 0, 9),
+(35, 'ыыыыыыыыыыыыыыыыыыыы', 'Sergey_Bobkov', 'none', '2018-12-26 16:32:22', 'no', 'no', 0, 9),
+(36, 'some', 'Artem_Tynyanyi', 'none', '2018-12-28 12:23:31', 'no', 'no', 0, 12),
+(37, 'hi serj', 'Artem_Tynyanyi', 'none', '2018-12-28 12:29:24', 'no', 'no', 0, 12),
+(38, 'sime', 'Sergey_Bobkov', 'none', '2018-12-28 12:57:58', 'no', 'no', 0, 9),
+(39, 'some', 'Sergey_Bobkov', 'none', '2018-12-28 14:40:49', 'no', 'no', 0, 9),
+(40, 'new', 'Sergey_Bobkov', 'none', '2018-12-28 14:54:36', 'no', 'no', 0, 9),
+(41, 'better lessons', 'Artem_Tynyanyi', 'none', '2018-12-28 15:44:46', 'no', 'no', 0, 12);
 
 -- --------------------------------------------------------
 
@@ -78,6 +102,20 @@ CREATE TABLE `posts_comments` (
   `removed` varchar(255) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `posts_comments`
+--
+
+INSERT INTO `posts_comments` (`id`, `post_body`, `posted_by`, `posted_to`, `date_added`, `removed`, `post_id`) VALUES
+(23, '1', '9', 'Sergey_Bobkov', '2018-12-28 15:38:56', 'no', 40),
+(24, '1', '9', 'Sergey_Bobkov', '2018-12-28 15:39:13', 'no', 40),
+(25, 'some', '12', 'Sergey_Bobkov', '2018-12-28 15:39:53', 'no', 40),
+(26, 'new', '12', 'Sergey_Bobkov', '2018-12-28 15:43:36', 'no', 39),
+(27, 'some', '12', 'Artem_Tynyanyi', '2018-12-28 15:45:01', 'no', 41),
+(28, 'new', '12', 'Artem_Tynyanyi', '2018-12-28 15:45:20', 'no', 41),
+(29, 'new', '12', 'Sergey_Bobkov', '2018-12-28 15:45:47', 'no', 26),
+(30, 'new comment', '9', 'Artem_Tynyanyi', '2018-12-28 16:18:40', 'no', 41);
 
 -- --------------------------------------------------------
 
@@ -106,9 +144,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `unique_id`, `first_name`, `last_name`, `username`, `email`, `password`, `signup_date`, `profile_pic`, `num_posts`, `num_likes`, `user_closed`, `friend_array`) VALUES
-(9, 'id1111875596', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov@inbox.ru', '$2y$10$/24E1EVKTnPXHlI67BY5leHtaSWcczXToZVJPHCwooiiij3gmZaSC', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 3, 0, 'no', ','),
-(10, 'id955072364', 'Kira', 'Taran', 'Kira_Taran', 'taran.kira@rambler.ru', '$2y$10$Ni0/fYKpm/XxxFDsPnqXZu9r6Ci/AveQRPHf2yfyVRLlN3NzomiiK', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 2, 0, 'no', ','),
-(11, 'id1813683130', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov1@inbox.ru', '$2y$10$HSdgwbG7mBDWqPy9CQPZA.IE8OoCUeXe6oA1XATvbqvW.fa5288Sq', '2018-12-21', 'assets/images/profile_pics/defaults/head_deep_blue.png', 0, 0, 'no', ',');
+(9, 'id1111875596', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov@inbox.ru', '$2y$10$/24E1EVKTnPXHlI67BY5leHtaSWcczXToZVJPHCwooiiij3gmZaSC', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 18, 0, 'no', ',10,12,'),
+(10, 'id955072364', 'Kira', 'Taran', 'Kira_Taran', 'taran.kira@rambler.ru', '$2y$10$Ni0/fYKpm/XxxFDsPnqXZu9r6Ci/AveQRPHf2yfyVRLlN3NzomiiK', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 8, 0, 'no', ',9,'),
+(11, 'id1813683130', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov1@inbox.ru', '$2y$10$HSdgwbG7mBDWqPy9CQPZA.IE8OoCUeXe6oA1XATvbqvW.fa5288Sq', '2018-12-21', 'assets/images/profile_pics/defaults/head_deep_blue.png', 0, 0, 'no', ','),
+(12, 'id1651861240', 'Artem', 'Tynyanyi', 'Artem_Tynyanyi', 'tyn@yandex.ru', '$2y$10$gzxnCNA3Gn/jnucH7LxiUuCw0RJ.z8Laq2SeXJcg9yEQI2MMaOBV.', '2018-12-28', 'assets/images/profile_pics/defaults/head_emerald.png', 3, 0, 'no', ',9,10,');
 
 --
 -- Индексы сохранённых таблиц
@@ -153,19 +192,19 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT для таблицы `posts_comments`
 --
 ALTER TABLE `posts_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
