@@ -170,6 +170,7 @@ class Post
                           <button class="btn btn-danger" style="float: right" id="">×</button>
                         </div>
                         <div id="" class="mt-2 mb-2">' . $body . '</div>
+                        ' . $this->displayLikes($id, $userId) . '
                       </div>
                       <div class="mt-3 ml-3 mr-3">Comments <span class="badge badge-secondary">'. $amountComments .'</span></div>
                     </div>'. $this->displayComments($id, $userId) .'
@@ -254,6 +255,57 @@ class Post
     } else {
       //echo "<p class='text-center m-2'>No comments to Show!</p>";
     }
+    return ob_get_clean();
+  }
+
+  public function displayLikes($postId, $userId)
+  {
+    $getLikes = DB::query('SELECT likes, added_by, user_id FROM posts WHERE id=:postid', [':postid'=> $postId])[0];
+    ob_start();
+    $totalLikes = $getLikes['likes'];
+    $userLiked = $getLikes['user_id'];
+
+    $user = DB::query('SELECT * FROM users WHERE id = :userliked', [':userliked' => $userLiked])[0];
+
+
+        $totalUserLikes = $user['num_likes'];
+        $userName = $user['username'];
+
+        // like button
+        if (isset($_POST['like_button'])) {
+          $totalLikes++;
+          $totalUserLikes++;
+          DB::query('UPDATE posts SET likes = :totallikes WHERE id = :postid', [':totallikes' => $totalLikes, ':postid' => $postId]);
+          DB::query('UPDATE users SET num_likes = :totaluserlikes WHERE id = :userid', [':totaluserlikes' => $totalUserLikes, ':userid' => $userLiked]);
+          DB::query('INSERT INTO likes (username, post_id, user_id) VALUES(:username, :postid, :userid)', [':username' => $userName, ':postid' => $postId, ':userid' => $_SESSION['user_id']]);
+        }
+
+    // unlike button
+        if (isset($_POST['unlike_button'])) {
+          $totalLikes--;
+          $totalUserLikes--;
+          DB::query('UPDATE posts SET likes = :totallikes WHERE id = :postid', [':totallikes' => $totalLikes, ':postid' => $postId]);
+          DB::query('UPDATE users SET num_likes = :totaluserlikes WHERE id = :userid', [':totaluserlikes' => $totalUserLikes, ':userid' => $userLiked]);
+          DB::query('DELETE FROM likes WHERE user_id =:userid AND post_id=:postid', [':userid' => $_SESSION['user_id'], ':postid'=>$postId]);
+        }
+
+            $check = DB::query('SELECT * FROM likes WHERE user_id = :userid AND post_id = :postid', [':userid' => $_SESSION['user_id'], ':postid'=> $postId]);
+debug($check);
+                $count = count($check);
+
+
+
+                if ($count > 0) {
+                  echo '<form action="index.php?post_id=' . $postId . '" method="post">
+                      <input type="submit" class="btn" name="unlike_button" value="UnLike">
+                      <span class="badge badge-secondary">'. $totalLikes .'</span> Likes
+                    </form>';
+                } else {
+                  echo '<form action="index.php?post_id=' . $postId . '" method="post">
+                      <input type="submit" class="btn" name="like_button" value="Like">
+                      <span class="badge badge-secondary">'. $totalLikes .'</span> Likes
+                    </form>';
+                }
     return ob_get_clean();
   }
 

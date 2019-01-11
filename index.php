@@ -13,6 +13,7 @@ if (isset($_POST['post'])) {
 if (isset($_GET['post_id'])) {
   $postId = $_GET['post_id'];
   $postObj->displayComments($postId, $userId);
+  $postObj->displayLikes($postId, $userId);
   header('Location: /');
 }
 
