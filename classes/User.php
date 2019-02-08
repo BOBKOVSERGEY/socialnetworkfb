@@ -44,6 +44,7 @@ class User
   {
     return $this->user['friend_array'];
   }
+
   public function isClosed()
   {
     if ($this->user['user_closed'] == 'yes') {
@@ -63,47 +64,49 @@ class User
   }
 
 
-  /*public function didReceiveRequest($user_from)
+   public function didReceiveRequest($userFrom)
   {
-    $user_to = $this->user['username'];
-    $check_request_query = mysqli_query($this->con, "SELECT * FROM friend_request WHERE user_to='$user_to' AND user_from='$user_from'");
-    if (mysqli_num_rows($check_request_query) > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  /*
+    $userTo = $this->user['id'];
+    $result = DB::query("SELECT * FROM friend_request WHERE user_to = ? AND user_from = ? ", [$userTo, $userFrom]);
 
-  public function didSendRequest($user_to)
-  {
-    $user_from = $this->user['username'];
-    $check_request_query = mysqli_query($this->con, "SELECT * FROM friend_request WHERE user_to='$user_to' AND user_from='$user_from'");
-    if (mysqli_num_rows($check_request_query) > 0) {
+    if (count($result) > 0) {
       return true;
     } else {
       return false;
     }
   }
 
-  public function removeFriend($user_to_remove)
-  {
-    $logged_in_user = $this->user['username'];
 
-    $query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE username='$user_to_remove'");
-    $row = mysqli_fetch_array($query);
-    $friend_array_username = $row['friend_array'];
+    public function didSendRequest($userTo)
+    {
+      $userFrom = $this->user['id'];
+      $result = DB::query("SELECT * FROM friend_request WHERE user_to = ? AND user_from = ? ", [$userTo, $userFrom]);
+      if (count($result) > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
 
-    $new_friend_array = str_replace($user_to_remove . ",", '', $this->user['friend_array']);
-    $remove_friend = mysqli_query($this->con, "UPDATE users SET friend_array='$new_friend_array' WHERE username='$logged_in_user'");
+   public function removeFriend($userToRemove)
+   {
+     $loggedInUser = $this->user['id'];
 
-    $new_friend_array = str_replace($this->user['username'] . ",", '', $friend_array_username);
-    $remove_friend = mysqli_query($this->con, "UPDATE users SET friend_array='$new_friend_array' WHERE username='$user_to_remove'");
-  }
+     $friends = DB::query("SELECT friend_array FROM users WHERE id = ?", [$userToRemove])[0];
 
-  public function sendRequest($user_to)
-  {
-    $user_from = $this->user['username'];
-    $query = mysqli_query($this->con, "INSERT INTO friend_request VALUES(null,'$user_to', '$user_from')");
-  }*/
+     $friendsArrayId = $friends['friend_array'];
+
+     $newFriendArray = str_replace($userToRemove . ",", '', $this->user['friend_array']);
+
+     $removeFriend = DB::query("UPDATE users SET friend_array = ? WHERE id = ? ", [$newFriendArray,$loggedInUser]);
+
+     $newFriendArray = str_replace($this->user['id'] . ",", '', $friendsArrayId);
+     $removeFriend = DB::query("UPDATE users SET friend_array = ? WHERE id = ?", [$newFriendArray, $userToRemove]);
+   }
+
+   public function sendRequest($userTo)
+   {
+     $userFrom = $this->user['id'];
+     DB::query("INSERT INTO friend_request VALUES(null,?, ?)", [$userTo, $userFrom]);
+   }
 }

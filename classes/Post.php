@@ -290,7 +290,6 @@ class Post
         }
 
             $check = DB::query('SELECT * FROM likes WHERE user_id = :userid AND post_id = :postid', [':userid' => $_SESSION['user_id'], ':postid'=> $postId]);
-debug($check);
                 $count = count($check);
 
 
