@@ -71,42 +71,49 @@ if (isset($_POST['respond_request'])) {
           </div>
         </div>
         <div class="col-md-9">
-          <div class="card">
+          <div class="card mb-3">
             <div class="card-body">
-              <!-- Button trigger modal -->
-
-              <!-- Modal -->
-              <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Post something</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <form action="" class="profile_post" method="post">
-                      <div class="modal-body">
-                        <div class="form-group">
-                          <textarea class="form-control" name="post_body" rows="3"></textarea>
-                          <input type="hidden" name="user_from" value="<?php //echo $userLoggedIn; ?>">
-                          <input type="hidden" name="user_to" value="<?php //echo $username; ?>">
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="post_button" class="btn btn-primary" id="submit_profile_post">Post</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+              <div class="posts_area"></div>
+              <div class="text-center m-3">
+                <i id="loading" class="fa fa-spinner fa-3x fa-spin"></i>
               </div>
+              <div>
+
+              </div>
+
             </div>
+
           </div>
         </div>
       </div>
     </div>
   </section>
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Post something</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="" class="profile_post" method="post">
+          <div class="modal-body">
+            <div class="form-group">
+              <textarea class="form-control" name="post_body" rows="3"></textarea>
+              <input type="hidden" name="user_from" value="<?php echo $_SESSION['user_id']; ?>">
+              <input type="hidden" name="user_to" value="<?php echo $userObj['id']; ?>">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" name="post_button" class="btn btn-primary" id="submit_profile_post">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
 <?php
-require __DIR__ . '/includes/footer.php';
+require __DIR__ . '/includes/footer-profile.php';
 ?>

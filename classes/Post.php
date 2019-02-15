@@ -16,7 +16,7 @@ class Post
       $dateAdded = date("Y-m-d H:i:s");
 
       // get username
-      $addedBy = $this->userObj->getUsername();
+      $addedBy = $this->userObj->getUserId();
       // get userId
       $userId = $this->userObj->getUserId();
 
@@ -98,7 +98,7 @@ class Post
   {
     $page = $data['page'];
 
-    //$userId = $this->userObj->getUserId();
+    $userLoggedId = $this->userObj->getUserId();
 
 
     if($page == 1)
@@ -124,9 +124,9 @@ class Post
         if ($post['user_to'] == 'none') {
           $userTo = "";
         } else {
-          $userToObj = new User($userId);
+          $userToObj = new User($post['user_to']);
           $userToName = $userToObj->getFirstAndLastName();
-          $userTo = "to <a href='" . $post['user_to'] . "'>" . $userToName . "</a>";
+          $userTo = "to <a href='" . $userToObj->getUniqueId() . "'>" . $userToName . "</a>";
         }
 
         $addedByObj = new User($userId);
@@ -145,6 +145,11 @@ class Post
           } else {
             $count++;
           }
+
+          if ($userLoggedId == $addedBy)
+            $delete_button = '<button class="btn btn-danger btn-delete-post" style="float: right" data-id-delete-post="' . $id . '">×</button>';
+          else
+            $delete_button = '';
 
           $user = DB::query('SELECT first_name, unique_id, last_name, profile_pic FROM users WHERE id=:added_by', [':added_by' => $userId])[0];
           //debug($user);
@@ -167,9 +172,9 @@ class Post
                       <div class="col-md-10">
                         <div class="posted_by">
                           <a href="'. $user['unique_id'] .'">'. $user['first_name'] . ' ' . $user['last_name'] . '</a>  ' . $userTo . ' ' . $timeMessage . '
-                          <button class="btn btn-danger" style="float: right" id="">×</button>
+                          '. $delete_button . '
                         </div>
-                        <div id="" class="mt-2 mb-2">' . $body . '</div>
+                        <div class="mt-2 mb-2">' . $body . '</div>
                         ' . $this->displayLikes($id, $userId) . '
                       </div>
                       <div class="mt-3 ml-3 mr-3">Comments <span class="badge badge-secondary">'. $amountComments .'</span></div>
@@ -177,6 +182,113 @@ class Post
                    </div>';
 
         }
+
+      }
+
+      if ($count > $limit) {
+        $str .= '<input type="hidden" class="nextPage" value="' . ($page + 1) . '">
+							<input type="hidden" class="noMorePosts" value="false">';
+      } else {
+        $str .= '<input type="hidden" class="noMorePosts" value="true">
+                  <p class="text-center m-3"> No more posts to show! </p>';
+      }
+
+
+    }
+
+    return $str;
+
+  }
+
+  public function loadProfilePosts($data, $limit)
+  {
+    $page = $data['page'];
+
+    $profileUserId = $data['profileUserId'];
+
+    $userLoggedId = $this->userObj->getUserId();
+
+
+    if($page == 1)
+      $start = 0;
+    else
+      $start = ($page - 1) * $limit;
+
+    $str = ""; //String to return
+
+    $dbPosts = DB::query('SELECT * FROM posts WHERE deleted=:deleted AND((added_by=:added_by AND user_to = :user_to) OR user_to =:profileUserId) ORDER BY id DESC', [':deleted' => 'no', ':added_by' => $profileUserId, ':user_to' => 'none', ':profileUserId' => $profileUserId]);
+    if (count($dbPosts) > 0) {
+      $numIteration = 0;
+      $count = 1;
+      foreach ($dbPosts as $post) {
+        //debug($post);
+        $id = $post['id'];
+        $body = $post['body'];
+        $addedBy = $post['added_by'];
+        $dateTime = $post['date_added'];
+        $userId = $post['user_id'];
+
+        /*if ($post['user_to'] == 'none') {
+          $userTo = "";
+        } else {
+          $userToObj = new User($post['user_to']);
+          $userToName = $userToObj->getFirstAndLastName();
+          $userTo = "to <a href='" . $userToObj->getUniqueId() . "'>" . $userToName . "</a>";
+        }
+
+        $addedByObj = new User($userId);
+        if ($addedByObj->isClosed()) {
+          continue;
+        }*/
+
+
+        //if ($this->userObj->isFriend($userId)) {
+          if ($numIteration++ < $start) {
+            continue;
+          }
+
+          if ($count > $limit) {
+            break;
+          } else {
+            $count++;
+          }
+
+          if ($userLoggedId == $addedBy)
+            $delete_button = '<button class="btn btn-danger btn-delete-post" style="float: right" data-id-delete-post="' . $id . '">×</button>';
+          else
+            $delete_button = '';
+
+          $user = DB::query('SELECT first_name, unique_id, last_name, profile_pic FROM users WHERE id=:added_by', [':added_by' => $userId])[0];
+          //debug($user);
+
+          $commentsCheck = DB::query("SELECT * FROM posts_comments WHERE post_id=:postid", [':postid'=>$id]);
+          $amountComments = count($commentsCheck);
+
+
+
+          $timeMessage = $this->getTime($dateTime);
+
+
+          $str .= '<div class="card status_post mt-3 p-3">
+                    <div class="row align-items-center">
+                      <div class="col-md-2">
+                        <div class="post_profile_pic">
+                          <img class="rounded-circle" src="'. $user['profile_pic'] .'" width="100%" alt="">
+                        </div>
+                      </div>
+                      <div class="col-md-10">
+                        <div class="posted_by">
+                          <a href="'. $user['unique_id'] .'">'. $user['first_name'] . ' ' . $user['last_name'] . '</a> ' . $timeMessage . '
+                          '. $delete_button . '
+                        </div>
+                        <div class="mt-2 mb-2">' . $body . '</div>
+                        ' . $this->displayLikes($id, $userId) . '
+                      </div>
+                      <div class="mt-3 ml-3 mr-3">Comments <span class="badge badge-secondary">'. $amountComments .'</span></div>
+                    </div>'. $this->displayComments($id, $userId) .'
+                   </div>';
+
+        //}
 
       }
 

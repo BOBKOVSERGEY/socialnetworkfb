@@ -4,15 +4,16 @@
   <script>
     $(function () {
       var userId = "<?php if ($_SESSION['user_id']) echo $_SESSION['user_id']; ?>";
+      var userProfileId = "<?php echo $userObj['id']; ?>";
       $('#loading').show();
       function ajaxRequest() {
         $.ajax({
-          url: "../ajax/ajax-load-posts.php",
+          url: "../ajax/ajax-load-profile-posts.php",
           type: "POST",
-          data:"page=1&userId=" + userId,
-          cache: false,
+          data:"page=1&userId=" + userId + '&profileUserId=' + userProfileId,
 
           success: function (data) {
+            console.log(data);
             $('#loading').hide();
             $('.posts_area').html(data)
           }
@@ -26,7 +27,6 @@
         var innerHeight = window.innerHeight;
 
         var page = $('.posts_area').find('.nextPage').val();
-        console.log(page);
 
         var noMorePosts = $('.posts_area').find('.noMorePosts').val();
 
@@ -46,9 +46,9 @@
           $('#loading').show();
 
           var ajaxReq = $.ajax({
-            url: "../ajax/ajax-load-posts.php",
+            url: "../ajax/ajax-load-profile-posts.php",
             type: "POST",
-            data:"page=" + page + "&userId=" + userId,
+            data:"page=" + page + "&userId=" + userId + '&profileUserId=' + userProfileId,
             cache: false,
 
             success: function (response) {

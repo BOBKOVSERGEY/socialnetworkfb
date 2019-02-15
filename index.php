@@ -6,7 +6,7 @@ $postObj = new Post($_SESSION['user_id']);
 //debug($postObj);
 
 if (isset($_POST['post'])) {
-  $postObj->submitPost($_POST['post_text'], 'none');
+  $postObj->submitPost($_POST['post_text'], $_SESSION['user_id']);
   header("Location: /");
 }
 
