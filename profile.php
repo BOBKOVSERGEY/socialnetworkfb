@@ -25,6 +25,7 @@ if (isset($_POST['add_friend'])) {
 if (isset($_POST['respond_request'])) {
   header("Location: requests.php");
 }
+
 ?>
   <section class="user-details">
     <div class="container">
@@ -66,6 +67,9 @@ if (isset($_POST['respond_request'])) {
                   ?>
                 </form>
                 <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="Post Something">
+                <?php if ($userUniqueId != $uniqueId) { ?>
+                  <div class="m-3"><span class="badge badge-pill badge-info"><?php echo $loggedInUser->getMutuaFriends($userObj['id']); ?></span> Mutual friends</div>
+                <?php  } ?>
               </div>
             </div>
           </div>

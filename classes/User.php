@@ -109,4 +109,27 @@ class User
      $userFrom = $this->user['id'];
      DB::query("INSERT INTO friend_request VALUES(null,?, ?)", [$userTo, $userFrom]);
    }
+
+   public function getMutuaFriends($userToCheck)
+   {
+      $mutualFriends = 0;
+      $userArray = $this->user['friend_array'];
+      $userArrayExplode = explode(',', $userArray);
+
+      $result = DB::query('SELECT friend_array FROM users WHERE id = ?', [$userToCheck])[0];
+      $userToCheckArray = $result['friend_array'];
+
+      $userToCheckArrayExplode = explode(',', $userToCheckArray);
+
+      foreach ($userArrayExplode as $i) {
+        foreach ($userToCheckArrayExplode as $j) {
+          if ($i == $j && $i != '') {
+            $mutualFriends++;
+          }
+        }
+      }
+
+      return $mutualFriends;
+
+   }
 }
