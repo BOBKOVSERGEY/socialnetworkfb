@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 22 2019 г., 18:22
+-- Время создания: Мар 01 2019 г., 18:25
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.0.26
 
@@ -47,6 +47,47 @@ CREATE TABLE `likes` (
   `user_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `likes`
+--
+
+INSERT INTO `likes` (`id`, `username`, `post_id`, `user_id`) VALUES
+(1, 'Kira_Taran', 47, 9),
+(2, 'Artem_Tynyanyi', 45, 9),
+(3, 'Sergey_Bobkov', 53, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_to` varchar(255) NOT NULL,
+  `user_from` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `date` datetime NOT NULL,
+  `opened` varchar(3) NOT NULL,
+  `viewed` varchar(3) NOT NULL,
+  `deleted` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `user_to`, `user_from`, `body`, `date`, `opened`, `viewed`, `deleted`) VALUES
+(1, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:14:34', 'no', 'no', 'no'),
+(2, 'id1111875596', 'id1651861240', 'I\'m some fruit', '2019-03-01 18:18:16', 'no', 'no', 'no'),
+(3, 'id1111875596', 'id1651861240', 'new message', '2019-03-01 18:18:32', 'no', 'no', 'no'),
+(4, 'id1111875596', 'id1651861240', 'new message', '2019-03-01 18:18:39', 'no', 'no', 'no'),
+(5, 'id1651861240', 'id1111875596', 'hi, artem, how are you', '2019-03-01 18:19:34', 'no', 'no', 'no'),
+(6, 'id1651861240', 'id1111875596', 'some', '2019-03-01 18:22:09', 'no', 'no', 'no'),
+(7, 'id1651861240', 'id1111875596', 'some', '2019-03-01 18:22:14', 'no', 'no', 'no'),
+(8, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:24:07', 'no', 'no', 'no'),
+(9, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:24:11', 'no', 'no', 'no');
+
 -- --------------------------------------------------------
 
 --
@@ -71,14 +112,16 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`id`, `body`, `added_by`, `user_to`, `date_added`, `user_closed`, `deleted`, `likes`, `user_id`) VALUES
 (43, 'some', '9', 'none', '2019-02-15 15:39:42', 'no', 'yes', 0, 9),
-(45, 'hi, serj', '12', '9', '2019-02-15 15:48:38', 'no', 'no', 0, 12),
+(45, 'hi, serj', '12', '9', '2019-02-15 15:48:38', 'no', 'no', 1, 12),
 (46, 'hi, Artem, how are you?', '9', '12', '2019-02-15 15:56:54', 'no', 'yes', 0, 9),
-(47, 'hi, sergey', '10', '9', '2019-02-15 16:52:02', 'no', 'no', 0, 10),
+(47, 'hi, sergey', '10', '9', '2019-02-15 16:52:02', 'no', 'no', 1, 10),
 (48, 'some', '9', 'none', '2019-02-15 16:52:49', 'no', 'yes', 0, 9),
 (49, 'some', '9', 'none', '2019-02-15 16:53:44', 'no', 'yes', 0, 9),
 (50, 'some', '9', 'none', '2019-02-15 18:21:42', 'no', 'yes', 0, 9),
 (51, 'some', '9', 'none', '2019-02-22 17:35:05', 'no', 'yes', 0, 9),
-(52, 'some', '9', 'none', '2019-02-22 17:35:20', 'no', 'yes', 0, 9);
+(52, 'some', '9', 'none', '2019-02-22 17:35:20', 'no', 'yes', 0, 9),
+(53, 'some', '9', 'none', '2019-03-01 14:15:38', 'no', 'no', 1, 9),
+(54, 'some', '9', 'none', '2019-03-01 14:16:05', 'no', 'no', 0, 9);
 
 -- --------------------------------------------------------
 
@@ -130,10 +173,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `unique_id`, `first_name`, `last_name`, `username`, `email`, `password`, `signup_date`, `profile_pic`, `num_posts`, `num_likes`, `user_closed`, `friend_array`) VALUES
-(9, 'id1111875596', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov@inbox.ru', '$2y$10$/24E1EVKTnPXHlI67BY5leHtaSWcczXToZVJPHCwooiiij3gmZaSC', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 26, 3, 'no', ',10,12,'),
-(10, 'id955072364', 'Kira', 'Taran', 'Kira_Taran', 'taran.kira@rambler.ru', '$2y$10$Ni0/fYKpm/XxxFDsPnqXZu9r6Ci/AveQRPHf2yfyVRLlN3NzomiiK', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 9, 3, 'no', ',9,'),
+(9, 'id1111875596', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov@inbox.ru', '$2y$10$/24E1EVKTnPXHlI67BY5leHtaSWcczXToZVJPHCwooiiij3gmZaSC', '2018-12-21', 'assets/images/profile_pics/id11118755963ab287001466a250e795b2337cde6a2bn.jpeg', 28, 4, 'no', ',10,12,'),
+(10, 'id955072364', 'Kira', 'Taran', 'Kira_Taran', 'taran.kira@rambler.ru', '$2y$10$Ni0/fYKpm/XxxFDsPnqXZu9r6Ci/AveQRPHf2yfyVRLlN3NzomiiK', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 9, 4, 'no', ',9,'),
 (11, 'id1813683130', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov1@inbox.ru', '$2y$10$HSdgwbG7mBDWqPy9CQPZA.IE8OoCUeXe6oA1XATvbqvW.fa5288Sq', '2018-12-21', 'assets/images/profile_pics/defaults/head_deep_blue.png', 0, 0, 'no', ','),
-(12, 'id1651861240', 'Artem', 'Tynyanyi', 'Artem_Tynyanyi', 'tyn@yandex.ru', '$2y$10$gzxnCNA3Gn/jnucH7LxiUuCw0RJ.z8Laq2SeXJcg9yEQI2MMaOBV.', '2018-12-28', 'assets/images/profile_pics/defaults/head_emerald.png', 5, 0, 'no', ',10,9,'),
+(12, 'id1651861240', 'Artem', 'Tynyanyi', 'Artem_Tynyanyi', 'tyn@yandex.ru', '$2y$10$gzxnCNA3Gn/jnucH7LxiUuCw0RJ.z8Laq2SeXJcg9yEQI2MMaOBV.', '2018-12-28', 'assets/images/profile_pics/id16518612406a869ab37456c83e6319187473346d85n.jpeg', 5, 1, 'no', ',10,9,'),
 (13, 'id484991212', 'Nikita', 'Borovok', 'Nikita_Borovok', 'n1@n.ru', '$2y$10$oZWYnBNcMuMpOy2EFOCcaeoB8iiMo01KJEM/zLKaE3U7VHu/I5pKi', '2019-02-08', 'assets/images/profile_pics/defaults/head_emerald.png', 0, 0, 'no', ',');
 
 --
@@ -150,6 +193,12 @@ ALTER TABLE `friend_request`
 -- Индексы таблицы `likes`
 --
 ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -185,13 +234,19 @@ ALTER TABLE `friend_request`
 -- AUTO_INCREMENT для таблицы `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT для таблицы `posts_comments`

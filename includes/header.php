@@ -24,6 +24,7 @@ if (isset($_SESSION['username'])) {
   <link rel="stylesheet" href="/assets/css/fontAweasome.css">
   <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/jquery.Jcrop.css">
 </head>
 <body>
 <header>
