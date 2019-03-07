@@ -47,7 +47,7 @@ if (isset($_SESSION['username'])) {
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
+          <a class="nav-link" href="messages.php">Messages</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Notice</a>

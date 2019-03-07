@@ -113,6 +113,11 @@ img {
   max-height: 150px;
   overflow-x: auto;
 }
+.messages__loaded {
+  max-height: 400px;
+  height: 400px;
+  overflow-y: scroll;
+}
 
 
 @media only screen and (max-width : 480px) {

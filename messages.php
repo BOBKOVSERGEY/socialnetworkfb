@@ -58,7 +58,11 @@ if (isset($_POST['post_message'])) {
             <?php
             if ($userTo != 'new') {
               echo "<h4>You and <a href='" . $userTo . "'>" . $userToObj->getFirstAndLastName() . "</a></h4>";
+              echo '<div class="messages__loaded" id="scroll_messages">'. $messageObj->getMessages($userTo) .'</div>';
+            } else {
+              echo '<h4>New Message</h4>';
             }
+
             ?>
             <form action="" method="post">
               <?php if ($userTo == 'new') {
@@ -83,3 +87,7 @@ if (isset($_POST['post_message'])) {
     </div>
   </div>
 </section>
+
+<?php
+require __DIR__ . '/includes/footer.php';
+?>

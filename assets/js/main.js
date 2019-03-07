@@ -91,3 +91,7 @@ function cancelCrop(){
   return false;
 }
 
+
+// scroll messages
+let divMessages = document.querySelector('#scroll_messages');
+divMessages.scrollTop = divMessages.scrollHeight;
