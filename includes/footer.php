@@ -2,8 +2,10 @@
 <script src="/assets/js/main.js"></script>
 <?php if (isset($_SESSION['user_id'])) {?>
   <script>
-    $(function () {
+
       var userId = "<?php if ($_SESSION['user_id']) echo $_SESSION['user_id']; ?>";
+      var userUniqueId = "<?php if ($_SESSION['unique_id']) echo $_SESSION['unique_id']; ?>";
+
       $('#loading').show();
       function ajaxRequest() {
         $.ajax({
@@ -65,7 +67,6 @@
         return false;
 
       })
-    })
   </script>
 <?php }?>
 

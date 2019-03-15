@@ -51,6 +51,13 @@ if (isset($_POST['post_message'])) {
             </div>
           </div>
         </div>
+        <div class="card p-2 mt-3 text-center" id="conversation">
+          <h4>Conversation</h4>
+          <div class="conversation__load mt-3 mb-3">
+            <?php echo $messageObj->getConvos(); ?>
+          </div>
+          <a class="btn btn-success" href="messages.php?u=new">New Message</a>
+        </div>
       </div>
       <div class="col-md-9">
         <div class="card">
@@ -68,7 +75,7 @@ if (isset($_POST['post_message'])) {
               <?php if ($userTo == 'new') {
                 echo '<p class="text-success mb-3">Select the friend you would like to message</p>';
                 echo '<div class="form-group">
-                        <input type="text" class="form-control" placeholder="To:">
+                        <input type="text" class="form-control messages__search-friend" name="q" placeholder="To:">
                       </div>';
                 echo '<div class="results">
                         
@@ -81,6 +88,7 @@ if (isset($_POST['post_message'])) {
 
               <button type="submit" name="post_message" id="message_submit" class="btn btn-primary">Отправить</button>
             </form>
+
           </div>
         </div>
       </div>

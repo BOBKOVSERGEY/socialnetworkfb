@@ -56,6 +56,19 @@ $(function () {
     });
     
   });
+
+
+
+
+
+
+  $('.messages__search-friend').on('keyup', function () {
+    $.post('/ajax/ajax-friend-search.php', {query:this.value, userLoggedIn:userUniqueId}, function (data) {
+      $('.results').html(data);
+    });
+  });
+
+
 });
 
 
@@ -91,7 +104,8 @@ function cancelCrop(){
   return false;
 }
 
-
 // scroll messages
-let divMessages = document.querySelector('#scroll_messages');
-divMessages.scrollTop = divMessages.scrollHeight;
+if (document.querySelector('#scroll_messages')) {
+  let divMessages = document.querySelector('#scroll_messages');
+  divMessages.scrollTop = divMessages.scrollHeight;
+}

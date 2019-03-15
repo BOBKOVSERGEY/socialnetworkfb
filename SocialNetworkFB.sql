@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 07 2019 г., 15:53
+-- Время создания: Мар 15 2019 г., 17:38
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.0.26
 
@@ -78,23 +78,53 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `user_to`, `user_from`, `body`, `date`, `opened`, `viewed`, `deleted`) VALUES
-(1, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:14:34', 'no', 'no', 'no'),
-(2, 'id1111875596', 'id1651861240', 'I\'m some fruit', '2019-03-01 18:18:16', 'no', 'no', 'no'),
-(3, 'id1111875596', 'id1651861240', 'new message', '2019-03-01 18:18:32', 'no', 'no', 'no'),
-(4, 'id1111875596', 'id1651861240', 'new message', '2019-03-01 18:18:39', 'no', 'no', 'no'),
+(1, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:14:34', 'yes', 'no', 'no'),
+(2, 'id1111875596', 'id1651861240', 'I\'m some fruit', '2019-03-01 18:18:16', 'yes', 'no', 'no'),
+(3, 'id1111875596', 'id1651861240', 'new message', '2019-03-01 18:18:32', 'yes', 'no', 'no'),
+(4, 'id1111875596', 'id1651861240', 'new message', '2019-03-01 18:18:39', 'yes', 'no', 'no'),
 (5, 'id1651861240', 'id1111875596', 'hi, artem, how are you', '2019-03-01 18:19:34', 'yes', 'no', 'no'),
 (6, 'id1651861240', 'id1111875596', 'some', '2019-03-01 18:22:09', 'yes', 'no', 'no'),
 (7, 'id1651861240', 'id1111875596', 'some', '2019-03-01 18:22:14', 'yes', 'no', 'no'),
-(8, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:24:07', 'no', 'no', 'no'),
-(9, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:24:11', 'no', 'no', 'no'),
+(8, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:24:07', 'yes', 'no', 'no'),
+(9, 'id1111875596', 'id1651861240', 'some', '2019-03-01 18:24:11', 'yes', 'no', 'no'),
 (10, 'id1111875596', 'id955072364', 'some', '2019-03-07 14:42:15', 'yes', 'no', 'no'),
-(11, 'id1111875596', 'id1651861240', 'hi', '2019-03-07 15:22:00', 'no', 'no', 'no'),
-(12, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:49:19', 'no', 'no', 'no'),
-(13, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:49:40', 'no', 'no', 'no'),
-(14, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:49:53', 'no', 'no', 'no'),
-(15, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:51:31', 'no', 'no', 'no'),
-(16, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:51:47', 'no', 'no', 'no'),
-(17, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:51:57', 'no', 'no', 'no');
+(11, 'id1111875596', 'id1651861240', 'hi', '2019-03-07 15:22:00', 'yes', 'no', 'no'),
+(12, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:49:19', 'yes', 'no', 'no'),
+(13, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:49:40', 'yes', 'no', 'no'),
+(14, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:49:53', 'yes', 'no', 'no'),
+(15, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:51:31', 'yes', 'no', 'no'),
+(16, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:51:47', 'yes', 'no', 'no'),
+(17, 'id1111875596', 'id1651861240', 'some', '2019-03-07 15:51:57', 'yes', 'no', 'no'),
+(18, 'id1111875596', 'id1651861240', 'hi', '2019-03-15 14:04:57', 'yes', 'no', 'no'),
+(19, 'id1651861240', 'id1111875596', 'Привет тема, как дела', '2019-03-15 14:05:37', 'yes', 'no', 'no'),
+(20, 'id1111875596', 'id1651861240', 'Привет корж, отлично', '2019-03-15 14:06:06', 'yes', 'no', 'no'),
+(21, 'id1111875596', 'id1651861240', 'как ты поживаешь?', '2019-03-15 15:49:05', 'yes', 'no', 'no'),
+(22, 'id1651861240', 'id1111875596', 'norm', '2019-03-15 15:50:03', 'yes', 'no', 'no'),
+(23, 'id1651861240', 'id1111875596', 'norm', '2019-03-15 15:50:09', 'yes', 'no', 'no'),
+(24, 'id955072364', 'id1111875596', 'hi kira', '2019-03-15 15:50:19', 'yes', 'no', 'no'),
+(25, 'id955072364', 'id1651861240', 'hi', '2019-03-15 15:53:08', 'yes', 'no', 'no'),
+(26, 'id955072364', 'id1651861240', 'how are yuo', '2019-03-15 15:53:29', 'yes', 'no', 'no'),
+(27, 'id1111875596', 'id955072364', 'a new messages', '2019-03-15 15:54:09', 'yes', 'no', 'no'),
+(28, 'id1651861240', 'id955072364', 'new', '2019-03-15 15:54:20', 'no', 'no', 'no'),
+(29, 'id1651861240', 'id955072364', 'new', '2019-03-15 15:54:24', 'no', 'no', 'no'),
+(30, 'id1651861240', 'id955072364', 'new', '2019-03-15 15:55:42', 'no', 'no', 'no'),
+(31, 'id1651861240', 'id955072364', 'new', '2019-03-15 15:58:30', 'no', 'no', 'no'),
+(32, 'id1651861240', 'id955072364', 'new', '2019-03-15 16:01:07', 'no', 'no', 'no'),
+(33, 'id1651861240', 'id955072364', 'new', '2019-03-15 16:03:13', 'no', 'no', 'no'),
+(34, 'id1651861240', 'id955072364', 'new', '2019-03-15 16:05:21', 'no', 'no', 'no'),
+(35, 'id1651861240', 'id955072364', 'new', '2019-03-15 16:06:18', 'no', 'no', 'no'),
+(36, 'id1651861240', 'id1111875596', 'hi', '2019-03-15 16:25:14', 'no', 'no', 'no'),
+(37, 'id1111875596', 'id955072364', 'как у тебя дела, что нового пойдем углять', '2019-03-15 16:33:11', 'yes', 'no', 'no'),
+(38, 'id955072364', 'id1111875596', 'hi kira', '2019-03-15 16:34:47', 'yes', 'no', 'no'),
+(39, 'id484991212', 'id1111875596', 'hi man', '2019-03-15 16:37:39', 'no', 'no', 'no'),
+(40, 'id484991212', 'id1111875596', 'hi man', '2019-03-15 16:37:45', 'no', 'no', 'no'),
+(41, 'id484991212', 'id1111875596', 'hi man', '2019-03-15 16:39:20', 'no', 'no', 'no'),
+(42, 'id484991212', 'id1111875596', 'hi man', '2019-03-15 16:39:54', 'no', 'no', 'no'),
+(43, 'id484991212', 'id1111875596', 'hi man', '2019-03-15 16:40:11', 'no', 'no', 'no'),
+(44, 'id484991212', 'id1111875596', 'hi man', '2019-03-15 16:40:26', 'no', 'no', 'no'),
+(45, 'id955072364', 'id1111875596', 'how are you', '2019-03-15 16:49:11', 'yes', 'no', 'no'),
+(46, 'id955072364', 'id1111875596', 'как у тебя дела, что нового пойдем углять', '2019-03-15 16:49:49', 'yes', 'no', 'no'),
+(47, 'id1111875596', 'id955072364', 'all good', '2019-03-15 16:50:25', 'no', 'no', 'no');
 
 -- --------------------------------------------------------
 
@@ -129,7 +159,8 @@ INSERT INTO `posts` (`id`, `body`, `added_by`, `user_to`, `date_added`, `user_cl
 (51, 'some', '9', 'none', '2019-02-22 17:35:05', 'no', 'yes', 0, 9),
 (52, 'some', '9', 'none', '2019-02-22 17:35:20', 'no', 'yes', 0, 9),
 (53, 'some', '9', 'none', '2019-03-01 14:15:38', 'no', 'no', 1, 9),
-(54, 'some', '9', 'none', '2019-03-01 14:16:05', 'no', 'no', 0, 9);
+(54, 'some', '9', 'none', '2019-03-01 14:16:05', 'no', 'no', 0, 9),
+(55, 'new post something', '10', 'none', '2019-03-15 16:45:16', 'no', 'no', 0, 10);
 
 -- --------------------------------------------------------
 
@@ -182,9 +213,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `unique_id`, `first_name`, `last_name`, `username`, `email`, `password`, `signup_date`, `profile_pic`, `num_posts`, `num_likes`, `user_closed`, `friend_array`) VALUES
 (9, 'id1111875596', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov@inbox.ru', '$2y$10$/24E1EVKTnPXHlI67BY5leHtaSWcczXToZVJPHCwooiiij3gmZaSC', '2018-12-21', 'assets/images/profile_pics/id11118755963ab287001466a250e795b2337cde6a2bn.jpeg', 28, 4, 'no', ',10,12,'),
-(10, 'id955072364', 'Kira', 'Taran', 'Kira_Taran', 'taran.kira@rambler.ru', '$2y$10$Ni0/fYKpm/XxxFDsPnqXZu9r6Ci/AveQRPHf2yfyVRLlN3NzomiiK', '2018-12-21', 'assets/images/profile_pics/defaults/head_emerald.png', 9, 4, 'no', ',9,'),
+(10, 'id955072364', 'Kira', 'Taran', 'Kira_Taran', 'taran.kira@rambler.ru', '$2y$10$Ni0/fYKpm/XxxFDsPnqXZu9r6Ci/AveQRPHf2yfyVRLlN3NzomiiK', '2018-12-21', 'assets/images/profile_pics/id955072364d295d4db29625687dd285f7e3fbc48b5n.jpeg', 10, 4, 'no', ',9,12,'),
 (11, 'id1813683130', 'Sergey', 'Bobkov', 'Sergey_Bobkov', 'sergey_bobkov1@inbox.ru', '$2y$10$HSdgwbG7mBDWqPy9CQPZA.IE8OoCUeXe6oA1XATvbqvW.fa5288Sq', '2018-12-21', 'assets/images/profile_pics/defaults/head_deep_blue.png', 0, 0, 'no', ','),
-(12, 'id1651861240', 'Artem', 'Tynyanyi', 'Artem_Tynyanyi', 'tyn@yandex.ru', '$2y$10$gzxnCNA3Gn/jnucH7LxiUuCw0RJ.z8Laq2SeXJcg9yEQI2MMaOBV.', '2018-12-28', 'assets/images/profile_pics/id16518612406a869ab37456c83e6319187473346d85n.jpeg', 5, 1, 'no', ',10,9,'),
+(12, 'id1651861240', 'Artem', 'Tynyanyi', 'Artem_Tynyanyi', 'tyn@yandex.ru', '$2y$10$gzxnCNA3Gn/jnucH7LxiUuCw0RJ.z8Laq2SeXJcg9yEQI2MMaOBV.', '2018-12-28', 'assets/images/profile_pics/id16518612406a869ab37456c83e6319187473346d85n.jpeg', 5, 1, 'no', ',10,9,10,'),
 (13, 'id484991212', 'Nikita', 'Borovok', 'Nikita_Borovok', 'n1@n.ru', '$2y$10$oZWYnBNcMuMpOy2EFOCcaeoB8iiMo01KJEM/zLKaE3U7VHu/I5pKi', '2019-02-08', 'assets/images/profile_pics/defaults/head_emerald.png', 0, 0, 'no', ',');
 
 --
@@ -236,7 +267,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `friend_request`
 --
 ALTER TABLE `friend_request`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `likes`
@@ -248,13 +279,13 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT для таблицы `posts_comments`
